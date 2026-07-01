@@ -12,7 +12,16 @@ datasource db {
   provider = "postgresql"
 }
 
-// model user{
-//    userId
-//    username 
-// }
+model User{
+ Id  String  @id  @default(uuid())
+ username String
+ password String
+ todos Todo[]
+}
+model Todo{
+  Id String @id @default(uuid())
+  task String
+  done Boolean @default(false)
+  userId String 
+  user User @relation(fields: [userId],references: [Id])
+}
