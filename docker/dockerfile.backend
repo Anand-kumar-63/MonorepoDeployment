@@ -1,0 +1,13 @@
+from node:22-apline
+WORKDIR ./app
+
+copy ./package.json ./package.json
+run bun install
+
+copy . .
+run bun run build
+
+EXPOSE 4000
+
+cmd ["bun", "run" , "dist/index.js"]
+

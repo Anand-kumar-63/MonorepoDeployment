@@ -1,0 +1,12 @@
+from node:22-alpine
+WORKDIR ./app
+
+copy ./package.json ./package.json
+run bun install
+
+copy . .
+run bun run build
+
+EXPOSE 8081
+
+CMD ["bun", "run", "dist/index.js"] 

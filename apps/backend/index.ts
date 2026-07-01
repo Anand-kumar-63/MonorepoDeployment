@@ -43,3 +43,7 @@ app.post("/users", async (req, res) => {
     });
   }
 });
+
+app.listen(4000,()=>{
+    console.log(`server is listening on http://localhost:${4000}`);
+})
