@@ -1,13 +1,22 @@
-from node:22-apline
-WORKDIR ./app
+From oven/bun:1
+WORKDIR /usr/src/app
 
-copy ./package.json ./package.json
+COPY ./packages ./packages
+COPY ./package.json ./package.json
+
+COPY ./bun.lock ./bun.lock
+COPY ./turbo.json ./turbo.json
+
+copy ./apps/backend  ./apps/backend
+
 run bun install
+run bun run db:generate
 
-copy . .
-run bun run build
+expose 8080
 
-EXPOSE 4000
+CMD ["bun","run","start:backend"]
 
-cmd ["bun", "run" , "dist/index.js"]
+
+
+
 
