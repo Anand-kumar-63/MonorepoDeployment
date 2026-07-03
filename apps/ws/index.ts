@@ -1,5 +1,5 @@
-import { password, serve } from "bun";
-import { prismaClient } from "db/clients";
+// import { password, serve } from "bun";
+import { prismaClient } from "@repo/db";
 
 Bun.serve({
   port: 8081,

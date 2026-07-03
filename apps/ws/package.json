@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "db": "*",
+    "@repo/db": "workspace:*",
     "websocket": "^1.0.35"
   },
   "scripts": {
