@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
+import { prismaClient } from "@repo/db";
 import dotenv from "dotenv";
-import { prismaClient } from "db/clients";
 dotenv.config();
 const app = express();
 app.use(express.json());
