@@ -1,0 +1,14 @@
+from oven/bun:1
+
+copy ./packages ./packages
+copy ./bun.lock ./bun.lock
+
+copy ./package.json ./package.json
+copy ./turbo.json ./turbo.json
+
+run bun install
+run bun run db:generate
+run bun run build:frontend
+
+EXPOSE 4000
+CMD [ "bun","run","start:frontend"]
