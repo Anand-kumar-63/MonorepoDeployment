@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
+import "dotenv/config"
 import { prismaClient } from "@repo/db";
-import dotenv from "dotenv";
-dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -19,20 +18,18 @@ app.get("/users", async (req, res) => {
 app.post("/users", async (req, res) => {
   try {
     const { username, password } = req.body;
-
+    console.log(req.body);
     if (!username || !password) {
       return res.status(400).json({
         error: "username and password required",
       });
     }
-
     const user = await prismaClient.user.create({
       data: {
-        username,
-        password,
+        username:req.body.username.toString(),
+        password:req.body.password.toString(),
       },
     });
-
     return res.status(201).json({
       message: "User created successfully",
       user,

@@ -4,6 +4,9 @@
   "workspaces": {
     "": {
       "name": "monorepo_deployment",
+      "dependencies": {
+        "dotenv": "^17.4.2",
+      },
       "devDependencies": {
         "prettier": "^3.7.4",
         "turbo": "^2.10.2",

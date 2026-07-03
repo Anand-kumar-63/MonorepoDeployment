@@ -124,3 +124,7 @@ means Next.js will regenerate the page every 60 seconds with updated database da
 
 Final Summary:
 Static Site Generation in Next.js generates pages during build time and stores them inside the `.next` folder. After deployment, Next.js serves these pre-generated pages without calling the database again. This provides excellent speed and SEO benefits, but new database changes will not appear automatically unless we rebuild the application or use techniques like ISR or dynamic rendering.
+
+
+## Why Nextjs Projects Dockerfile becomes tricky??
+If your frontend build needs to talk to the database during the build phase
