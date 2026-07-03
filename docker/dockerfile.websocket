@@ -1,12 +1,17 @@
-from node:22-alpine
-WORKDIR ./app
+FROM oven/bun:1
 
-copy ./package.json ./package.json
+WORKDIR /usr/src/app
+
+copy ./packages ./packages
+copy ./packages.json ./package.json
+
+copy ./bun.lock ./bun.lock
+copy ./turbo.json ./turbo.json
+
 run bun install
+run bun run db:generate
 
-copy . .
-run bun run build
+expose 8081
 
-EXPOSE 8081
+CMD [ "bun","run","start:websocket"]
 
-CMD ["bun", "run", "dist/index.js"] 
